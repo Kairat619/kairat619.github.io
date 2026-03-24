@@ -7,6 +7,7 @@
     "build": "astro check && astro build && pagefind --site dist",
     "preview": "astro preview",
     "sync": "astro sync",
+    "sync:issues": "node scripts/fetch-issues.mjs",
     "astro": "astro",
     "format:check": "prettier --check .",
     "format": "prettier --write .",
