@@ -15,11 +15,16 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 jobs:
   update-blog:
     if: github.event_name != 'issues' || github.event.issue.pull_request == null
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - name: Checkout repository
@@ -48,6 +53,9 @@ jobs:
           GITHUB_REPO: ${{ github.event.repository.name }}
         run: node scripts/fetch-issues.mjs
 
+      - name: Build site
+        run: pnpm run build
+
       - name: Commit generated blog posts
         run: |
           git config user.name "github-actions[bot]"
@@ -56,3 +64,15 @@ jobs:
           git diff --cached --quiet && exit 0
           git commit -m "Sync blog posts from GitHub Issues"
           git push
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
