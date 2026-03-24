@@ -3,6 +3,7 @@ title: "Creating a blog website using GitHub"
 pubDatetime: 2026-03-24T13:59:16Z
 modDatetime: 2026-03-24T14:07:27Z
 slug: creating-a-blog-website-using-github
+featured: false
 draft: false
 tags: ["others"]
 description: "Creating a blog website using GitHub Pages, GitHub Issues, and GitHub Actions is a great way to publish a personal blog and manage it efficiently. Here’s a..."
