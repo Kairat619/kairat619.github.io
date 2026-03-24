@@ -5,6 +5,7 @@ const owner = process.env.GITHUB_OWNER || "Kairat619";
 const repo = process.env.GITHUB_REPO || "kairat619.github.io";
 const token = process.env.GITHUB_TOKEN;
 const label = process.env.GITHUB_BLOG_LABEL || "blog-post";
+const featuredLabel = process.env.GITHUB_FEATURED_LABEL || "featured";
 const outputDir = path.join(process.cwd(), "src", "data", "blog", "_issues");
 
 if (!token) {
@@ -42,15 +43,18 @@ function yamlString(value) {
 
 function buildMarkdown(issue) {
   const slug = slugify(issue.title) || `issue-${issue.number}`;
-  const tags = issue.labels
+  const issueLabels = issue.labels
     .map(item => (typeof item === "string" ? item : item.name))
-    .filter(name => name && name !== label);
+    .filter(Boolean);
+  const isFeatured = issueLabels.includes(featuredLabel);
+  const tags = issueLabels.filter(name => name !== label && name !== featuredLabel);
   const frontmatter = [
     "---",
     `title: ${yamlString(issue.title)}`,
     `pubDatetime: ${issue.created_at}`,
     `modDatetime: ${issue.updated_at}`,
     `slug: ${slug}`,
+    `featured: ${isFeatured ? "true" : "false"}`,
     "draft: false",
     `tags: ${tags.length ? `[${tags.map(yamlString).join(", ")}]` : "[\"others\"]"}`,
     `description: ${yamlString(excerpt(issue.body || ""))}`,
