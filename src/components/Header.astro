@@ -68,6 +68,8 @@ const isActive = (path: string) => {
         aria-label={t.openMenu}
         aria-expanded="false"
         aria-controls="menu-items"
+        data-open-label={t.openMenu}
+        data-close-label={t.closeMenu}
       >
         <IconX id="close-icon" class="hidden" />
         <IconMenuDeep id="menu-icon" />
@@ -163,10 +165,7 @@ const isActive = (path: string) => {
   </div>
 </header>
 
-<script
-  is:inline
-  define:vars={{ openMenuLabel: t.openMenu, closeMenuLabel: t.closeMenu }}
->
+<script is:inline>
   function toggleNav() {
     const menuBtn = document.querySelector("#menu-btn");
     const menuItems = document.querySelector("#menu-items");
@@ -174,19 +173,22 @@ const isActive = (path: string) => {
     const closeIcon = document.querySelector("#close-icon");
 
     if (!menuBtn || !menuItems || !menuIcon || !closeIcon) return;
+    if (menuBtn.dataset.bound === "true") return;
+
+    menuBtn.dataset.bound = "true";
 
     menuBtn.addEventListener("click", () => {
       const openMenu = menuBtn.getAttribute("aria-expanded") === "true";
+      const openLabel = menuBtn.getAttribute("data-open-label") || "Open Menu";
+      const closeLabel =
+        menuBtn.getAttribute("data-close-label") || "Close Menu";
 
       menuBtn.setAttribute("aria-expanded", openMenu ? "false" : "true");
-      menuBtn.setAttribute(
-        "aria-label",
-        openMenu ? openMenuLabel : closeMenuLabel
-      );
+      menuBtn.setAttribute("aria-label", openMenu ? openLabel : closeLabel);
 
-      menuItems.classList.toggle("hidden");
-      menuIcon.classList.toggle("hidden");
-      closeIcon.classList.toggle("hidden");
+      menuItems.classList.toggle("hidden", openMenu);
+      menuIcon.classList.toggle("hidden", !openMenu);
+      closeIcon.classList.toggle("hidden", openMenu);
     });
   }
 
