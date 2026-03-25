@@ -1,7 +1,7 @@
 ---
 title: "A blogging template built with Astro"
 pubDatetime: 2026-03-24T14:59:53Z
-modDatetime: 2026-03-25T12:39:00Z
+modDatetime: 2026-03-25T12:40:56Z
 slug: a-blogging-template-built-with-astro
 featured: true
 draft: false
@@ -11,7 +11,9 @@ canonicalURL: "https://github.com/Kairat619/kairat619.github.io/issues/2"
 hideEditPost: true
 ---
 
-The astro-paper repository by satnaing is designed as a blogging template built with Astro. To use it as your template and integrate it with GitHub Pages, GitHub Issues, and GitHub Actions for automation, follow these steps:
+The astro-paper repository by satnaing is designed as a blogging template built with Astro. 
+To use it as your template and integrate it with GitHub Pages, GitHub Issues, 
+and GitHub Actions for automation, follow these steps:
 
 ---
 
