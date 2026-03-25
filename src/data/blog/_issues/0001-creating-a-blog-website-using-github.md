@@ -1,7 +1,7 @@
 ---
 title: "Creating a blog website using GitHub"
 pubDatetime: 2026-03-24T13:59:16Z
-modDatetime: 2026-03-24T14:07:27Z
+modDatetime: 2026-03-25T12:32:44Z
 slug: creating-a-blog-website-using-github
 featured: false
 draft: false
@@ -74,12 +74,12 @@ GitHub Actions can automate pulling Issues content and generating the blog websi
        build-and-deploy:
          runs-on: ubuntu-latest
          
-         steps:
+steps:
            - name: Checkout repository
              uses: actions/checkout@v3
 
            - name: Run Script to Generate Blog
-             run: bash ./generate_blog.sh
+          run: bash ./generate_blog.sh
      
            - name: Commit and Push Changes
              run: |
