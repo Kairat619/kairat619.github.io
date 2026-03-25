@@ -14,6 +14,8 @@ import { slugifyStr } from "@/utils/slugify";
 import IconChevronLeft from "@/assets/icons/IconChevronLeft.svg";
 import IconChevronRight from "@/assets/icons/IconChevronRight.svg";
 import { SITE } from "@/config";
+import { useTranslations } from "@/i18n/ui";
+import { getLocaleFromPathname, localizePath } from "@/i18n/utils";
 
 type Props = {
   post: CollectionEntry<"blog">;
@@ -21,6 +23,8 @@ type Props = {
 };
 
 const { post, posts } = Astro.props;
+const locale = getLocaleFromPathname(Astro.url.pathname);
+const t = useTranslations(locale);
 
 const {
   title,
@@ -133,12 +137,12 @@ const nextPost =
       {
         prevPost && (
           <a
-            href={getPath(prevPost.id, prevPost.filePath)}
+            href={localizePath(getPath(prevPost.id, prevPost.filePath), locale)}
             class="flex w-full gap-1 hover:opacity-75"
           >
             <IconChevronLeft class="inline-block flex-none rtl:rotate-180" />
             <div>
-              <span>Previous Post</span>
+              <span>{t.previousPost}</span>
               <div class="text-sm text-accent/85">{prevPost.title}</div>
             </div>
           </a>
@@ -147,11 +151,11 @@ const nextPost =
       {
         nextPost && (
           <a
-            href={getPath(nextPost.id, nextPost.filePath)}
+            href={localizePath(getPath(nextPost.id, nextPost.filePath), locale)}
             class="flex w-full justify-end gap-1 text-end hover:opacity-75 sm:col-start-2"
           >
             <div>
-              <span>Next Post</span>
+              <span>{t.nextPost}</span>
               <div class="text-sm text-accent/85">{nextPost.title}</div>
             </div>
             <IconChevronRight class="inline-block flex-none rtl:rotate-180" />
@@ -163,7 +167,7 @@ const nextPost =
   <Footer />
 </Layout>
 
-<script is:inline data-astro-rerun>
+<script is:inline data-astro-rerun define:vars={{ copyLabel: t.copy, copiedLabel: t.copied }}>
   /** Create a progress indicator
    *  at the top */
   function createProgressBar() {
@@ -230,7 +234,7 @@ const nextPost =
   /** Attaches copy buttons to code blocks in the document,
    * allowing users to copy code easily. */
   function attachCopyButtons() {
-    const copyButtonLabel = "Copy";
+    const copyButtonLabel = copyLabel;
     const codeBlocks = Array.from(document.querySelectorAll("pre"));
 
     for (const codeBlock of codeBlocks) {
@@ -269,7 +273,7 @@ const nextPost =
       await navigator.clipboard.writeText(text ?? "");
 
       // visual feedback that task is completed
-      button.innerText = "Copied";
+      button.innerText = copiedLabel;
 
       setTimeout(() => {
         button.innerText = copyButtonLabel;

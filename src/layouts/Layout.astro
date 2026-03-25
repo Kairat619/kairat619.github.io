@@ -3,6 +3,7 @@ import { Font } from "astro:assets";
 import { ClientRouter } from "astro:transitions";
 import { PUBLIC_GOOGLE_SITE_VERIFICATION } from "astro:env/client";
 import { SITE } from "@/config";
+import { getLocaleFromPathname, localizePath } from "@/i18n/utils";
 import "@/styles/global.css";
 
 type Props = {
@@ -15,6 +16,7 @@ type Props = {
   pubDatetime?: Date;
   modDatetime?: Date | null;
   scrollSmooth?: boolean;
+  lang?: string;
 };
 
 const {
@@ -27,9 +29,13 @@ const {
   pubDatetime,
   modDatetime,
   scrollSmooth = false,
+  lang,
 } = Astro.props;
 
 const socialImageURL = new URL(ogImage, Astro.url);
+const locale = lang || getLocaleFromPathname(Astro.url.pathname);
+const englishUrl = new URL(localizePath(Astro.url.pathname, "en"), Astro.url);
+const kazakhUrl = new URL(localizePath(Astro.url.pathname, "kk"), Astro.url);
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -51,7 +57,7 @@ const structuredData = {
 <!doctype html>
 <html
   dir={SITE.dir}
-  lang=`${SITE.lang ?? "en"}`
+  lang={locale}
   class={`${scrollSmooth && "scroll-smooth"}`}
 >
   <head>
@@ -59,6 +65,9 @@ const structuredData = {
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={canonicalURL} />
+    <link rel="alternate" hreflang="en" href={englishUrl} />
+    <link rel="alternate" hreflang="kk" href={kazakhUrl} />
+    <link rel="alternate" hreflang="x-default" href={englishUrl} />
     <meta name="generator" content={Astro.generator} />
 
     <!-- Load Font -->

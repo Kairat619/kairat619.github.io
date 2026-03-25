@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import { getLocaleFromPathname, localizePath } from "@/i18n/utils";
 import { slugifyStr } from "@/utils/slugify";
 import { getPath } from "@/utils/getPath";
 import Datetime from "./Datetime.astro";
@@ -11,11 +12,12 @@ type Props = {
 const { variant: Heading = "h2", id, data, filePath } = Astro.props;
 
 const { title, description, ...props } = data;
+const locale = getLocaleFromPathname(Astro.url.pathname);
 ---
 
 <li class="my-6">
   <a
-    href={getPath(id, filePath)}
+    href={localizePath(getPath(id, filePath), locale)}
     class:list={[
       "inline-block text-lg font-medium text-accent",
       "decoration-dashed underline-offset-4 hover:underline",

@@ -1,23 +1,27 @@
 ---
 import { SHARE_LINKS } from "@/constants";
+import { getShareLinkTitle, useTranslations } from "@/i18n/ui";
+import { getLocaleFromPathname } from "@/i18n/utils";
 import LinkButton from "./LinkButton.astro";
 
 const URL = Astro.url;
+const locale = getLocaleFromPathname(Astro.url.pathname);
+const t = useTranslations(locale);
 ---
 
 {
   SHARE_LINKS.length > 0 && (
     <div class="flex flex-none flex-col items-center justify-center gap-1 md:items-start">
-      <span class="italic">Share this post on:</span>
+      <span class="italic">{t.shareThisPost}</span>
       <div class="text-center">
         {SHARE_LINKS.map(social => (
           <LinkButton
             href={`${social.href + URL}`}
             class="scale-90 p-2 hover:rotate-6 sm:p-1"
-            title={social.linkTitle}
+            title={getShareLinkTitle(locale, social.name)}
           >
             <social.icon class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110" />
-            <span class="sr-only">{social.linkTitle}</span>
+            <span class="sr-only">{getShareLinkTitle(locale, social.name)}</span>
           </LinkButton>
         ))}
       </div>

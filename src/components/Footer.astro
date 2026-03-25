@@ -1,8 +1,12 @@
 ---
 import type { HTMLAttributes } from "astro/types";
 import Socials from "./Socials.astro";
+import { useTranslations } from "@/i18n/ui";
+import { getLocaleFromPathname } from "@/i18n/utils";
 
 const currentYear = new Date().getFullYear();
+const locale = getLocaleFromPathname(Astro.url.pathname);
+const t = useTranslations(locale);
 
 type Props = {
   noMarginTop?: boolean;
@@ -26,7 +30,7 @@ const { noMarginTop = false, class: className, ...attrs } = Astro.props;
     <div class="my-2 flex flex-col items-center whitespace-nowrap sm:flex-row">
       <span>Copyright &#169; {currentYear}</span>
       <span class="hidden sm:inline">&nbsp;|&nbsp;</span>
-      <span>All rights reserved.</span>
+      <span>{t.footerRights}</span>
     </div>
   </div>
 </footer>

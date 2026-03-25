@@ -1,0 +1,41 @@
+---
+import { useTranslations } from "@/i18n/ui";
+import {
+  getLocaleFromPathname,
+  switchLocalePath,
+  type SiteLocale,
+} from "@/i18n/utils";
+
+const locale = getLocaleFromPathname(Astro.url.pathname);
+
+const locales: SiteLocale[] = ["en", "kk"];
+---
+
+<div
+  class="inline-flex items-center rounded-full border border-border/80 p-1 text-xs font-semibold"
+  aria-label="Language switcher"
+>
+  {
+    locales.map(item => {
+      const href = switchLocalePath(Astro.url.pathname, Astro.url.search, item);
+      const active = item === locale;
+      const itemT = useTranslations(item);
+
+      return (
+        <a
+          href={href}
+          hreflang={item}
+          lang={item}
+          aria-current={active ? "true" : undefined}
+          class:list={[
+            "rounded-full px-2.5 py-1 transition-colors hover:text-accent",
+            { "bg-accent text-background hover:text-background": active },
+          ]}
+          title={itemT.languageName}
+        >
+          {itemT.languageShort}
+        </a>
+      );
+    })
+  }
+</div>
