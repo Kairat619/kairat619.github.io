@@ -1,7 +1,7 @@
 ---
 title: "A blogging template built with Astro"
 pubDatetime: 2026-03-24T14:59:53Z
-modDatetime: 2026-03-24T15:03:40Z
+modDatetime: 2026-03-25T12:39:00Z
 slug: a-blogging-template-built-with-astro
 featured: true
 draft: false
@@ -111,7 +111,7 @@ async function fetchIssues() {
   const issues = await response.json();
   console.log('Fetched Issues:', issues);
 
-  // Generate Astro Markdown Files
+//Generate Astro Markdown Files
   issues.forEach((issue) => {
     const content = `---
 title: ${issue.title}
