@@ -109,5 +109,3 @@ That's the conversation that builds culture. One exchange at a time, in the room
 Getting there isn't a tooling problem. It never was.
 
 That's on us. All of us.
-
-Source issue: [#4](https://github.com/Kairat619/kairat619.github.io/issues/4)
