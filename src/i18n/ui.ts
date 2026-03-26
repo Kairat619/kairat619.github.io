@@ -44,6 +44,9 @@ type TranslationDictionary = {
   homeReadMorePrefix: string;
   homeReadmeLabel: string;
   aboutTitle: string;
+  discussionTitle: string;
+  discussionText: string;
+  discussionLinkLabel: string;
 };
 
 const ui: Record<SiteLocale, TranslationDictionary> = {
@@ -92,6 +95,10 @@ const ui: Record<SiteLocale, TranslationDictionary> = {
     homeReadMorePrefix: "Read the blog posts or check",
     homeReadmeLabel: "README",
     aboutTitle: "About",
+    discussionTitle: "Discussion",
+    discussionText:
+      "This post was published from a GitHub issue. Join the conversation on the original thread.",
+    discussionLinkLabel: "Discuss on GitHub",
   },
   kk: {
     languageName: "Kazakh",
@@ -138,6 +145,10 @@ const ui: Record<SiteLocale, TranslationDictionary> = {
     homeReadMorePrefix: "Толығырақ білу үшін жазбаларды оқыңыз немесе",
     homeReadmeLabel: "README",
     aboutTitle: "Мен туралы",
+    discussionTitle: "Талқылау",
+    discussionText:
+      "Бұл жазба GitHub issue арқылы жарияланған. Пікір қалдыру немесе талқылауға қосылу үшін бастапқы issue-ге өтіңіз.",
+    discussionLinkLabel: "GitHub-та талқылау",
   },
 };
 

@@ -64,8 +64,6 @@ function buildMarkdown(issue) {
     "",
     issue.body?.trim() || "No content provided.",
     "",
-    `Source issue: [#${issue.number}](${issue.html_url})`,
-    "",
   ];
 
   return { slug, content: frontmatter.join("\n") };

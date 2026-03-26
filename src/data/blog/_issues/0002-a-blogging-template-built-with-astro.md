@@ -307,4 +307,3 @@ This workflow will:
 
 Let me know if you'd like more detailed guidance for code implementation or content styling!
 
-Source issue: [#2](https://github.com/Kairat619/kairat619.github.io/issues/2)

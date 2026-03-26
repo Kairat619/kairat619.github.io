@@ -6,6 +6,7 @@ import Footer from "@/components/Footer.astro";
 import Tag from "@/components/Tag.astro";
 import Datetime from "@/components/Datetime.astro";
 import EditPost from "@/components/EditPost.astro";
+import IssueDiscussion from "@/components/IssueDiscussion.astro";
 import ShareLinks from "@/components/ShareLinks.astro";
 import BackButton from "@/components/BackButton.astro";
 import BackToTopButton from "@/components/BackToTopButton.astro";
@@ -40,6 +41,8 @@ const {
 } = post.data;
 
 const { Content } = await render(post);
+const isIssuePost = /(^|[/\\])_issues([/\\]|$)/.test(post.filePath ?? "");
+const discussionUrl = isIssuePost && canonicalURL ? canonicalURL : undefined;
 
 let ogImageUrl: string | undefined;
 
@@ -129,6 +132,17 @@ const nextPost =
     <BackToTopButton />
 
     <ShareLinks />
+
+    {
+      discussionUrl && (
+        <IssueDiscussion
+          href={discussionUrl}
+          title={t.discussionTitle}
+          description={t.discussionText}
+          ctaLabel={t.discussionLinkLabel}
+        />
+      )
+    }
 
     <hr class="my-6 border-dashed" />
 

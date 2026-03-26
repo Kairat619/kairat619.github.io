@@ -118,5 +118,3 @@ steps:
 - GitHub Actions: Automates the process of converting Issues content into a website and publishing updates.
 
 Let me know if you'd like templates, or need help writing specific parts like a detailed HTML design or API scripts!
-
-Source issue: [#1](https://github.com/Kairat619/kairat619.github.io/issues/1)
