@@ -1,18 +1,15 @@
 ---
 title: "AI Didn't Break Your Culture. It Exposed It."
 pubDatetime: 2026-03-26T08:16:12Z
-modDatetime: 2026-03-26T08:25:21Z
+modDatetime: 2026-03-26T08:26:44Z
 slug: ai-didn-t-break-your-culture-it-exposed-it
 featured: false
 draft: false
 tags: ["others"]
-description: "AI Didn't Break Your Culture. It Exposed It. ============================================ An engineer pushes back on a decision. The response: \"ChatGPT rec..."
+description: "An engineer pushes back on a decision. The response: \"ChatGPT recommended something else.\" The tell isn't the recommendation. It's that they reached for an..."
 canonicalURL: "https://github.com/Kairat619/kairat619.github.io/issues/4"
 hideEditPost: true
 ---
-
-AI Didn't Break Your Culture. It Exposed It.
-============================================
 
 [#ai](https://dev.to/t/ai)[#webdev](https://dev.to/t/webdev)[#programming](https://dev.to/t/programming)[#leadership](https://dev.to/t/leadership)
 
