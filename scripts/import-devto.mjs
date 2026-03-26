@@ -11,7 +11,7 @@ const OPENAI_MODEL = process.env.OPENAI_MODEL || "gpt-4.1-mini";
 const OPENAI_API_BASE = (process.env.OPENAI_API_BASE || "https://api.openai.com/v1").replace(/\/+$/, "");
 const TRANSLATION_LANGUAGE = process.env.TRANSLATION_LANGUAGE || "Kazakh";
 const TARGET_LOCALE = process.env.TARGET_LOCALE || "kk";
-const IMPORT_DRAFT = (process.env.DEVTO_IMPORT_DRAFT || "true").toLowerCase() !== "false";
+const IMPORT_DRAFT = (process.env.DEVTO_IMPORT_DRAFT || "false").toLowerCase() !== "false";
 const OUTPUT_DIR = path.join(process.cwd(), "src", "data", "blog", "_devto");
 const STATE_FILE = path.join(OUTPUT_DIR, ".state.json");
 

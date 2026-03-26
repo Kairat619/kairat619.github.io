@@ -59,7 +59,7 @@ Generated posts will appear in `src/data/blog/_devto/`.
 - Each imported Dev.to post becomes a Markdown file.
 - Files are generated in `src/data/blog/_devto/`.
 - The original Dev.to URL is stored in `canonicalURL`.
-- Generated posts default to `draft: true` so you can review them before public release.
+- Generated posts default to `draft: false` so successful imports are published automatically.
 - If the source article has not changed, the script reuses the existing translation and skips another API call.
 
 ## Publish flow
@@ -67,9 +67,8 @@ Generated posts will appear in `src/data/blog/_devto/`.
 1. Publish or update an article on Dev.to
 2. Run the `Import Dev.to posts` workflow manually, or wait for the nightly schedule
 3. Review the generated Markdown in `src/data/blog/_devto/`
-4. Change `draft: false` if you want a post to go live
-5. Push to `main`
-6. GitHub Pages publishes the updated site
+4. Push to `main`
+5. GitHub Pages publishes the updated site
 
 ## Recommended next edits
 
@@ -85,5 +84,5 @@ Before launch, personalize `src/config.ts`:
 ## Notes
 
 - The importer is designed for your own Dev.to posts.
-- Translation quality is usually good, but review technical wording before publishing.
-- If you want fully automatic publishing later, set `DEVTO_IMPORT_DRAFT=false` in the workflow, but starting with drafts is safer.
+- Translation quality is usually good, so it is still worth reviewing technical wording after import.
+- If you want to hold posts for manual review in the future, set `DEVTO_IMPORT_DRAFT=true` in the workflow or local environment.

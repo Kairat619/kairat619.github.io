@@ -40,7 +40,7 @@ jobs:
           OPENAI_MODEL: ${{ secrets.OPENAI_MODEL }}
           TRANSLATION_LANGUAGE: Kazakh
           TARGET_LOCALE: kk
-          DEVTO_IMPORT_DRAFT: "true"
+          DEVTO_IMPORT_DRAFT: "false"
         run: pnpm run sync:devto
 
       - name: Commit generated posts

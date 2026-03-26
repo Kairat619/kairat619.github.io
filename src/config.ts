@@ -2,7 +2,7 @@ export const SITE = {
   website: "https://kairat619.github.io/",
   author: "Kairat",
   profile: "https://github.com/Kairat619",
-  desc: "A minimal, responsive and SEO-friendly blog.",
+  desc: "Qazaq tilindegi tehnologiya, web-azirleu jane jasandy intellekt turaly blog.",
   title: "BilimLink",
   ogImage: "astropaper-og.jpg",
   lightAndDarkMode: true,
@@ -18,6 +18,6 @@ export const SITE = {
   },
   dynamicOgImage: true,
   dir: "ltr", // "rtl" | "auto"
-  lang: "en", // html lang code. Set this empty and default will be "en"
+  lang: "kk", // html lang code. Set this empty and default will be "en"
   timezone: "Asia/Qyzylorda", // Default global timezone (IANA format) https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 } as const;
