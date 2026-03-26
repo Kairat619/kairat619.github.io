@@ -6,16 +6,18 @@ import Footer from "@/components/Footer.astro";
 import Tag from "@/components/Tag.astro";
 import Datetime from "@/components/Datetime.astro";
 import EditPost from "@/components/EditPost.astro";
+import IssueComments from "@/components/IssueComments.astro";
 import IssueDiscussion from "@/components/IssueDiscussion.astro";
 import ShareLinks from "@/components/ShareLinks.astro";
 import BackButton from "@/components/BackButton.astro";
 import BackToTopButton from "@/components/BackToTopButton.astro";
 import { getPath } from "@/utils/getPath";
+import { getIssueComments } from "@/utils/githubIssueComments";
 import { slugifyStr } from "@/utils/slugify";
 import IconChevronLeft from "@/assets/icons/IconChevronLeft.svg";
 import IconChevronRight from "@/assets/icons/IconChevronRight.svg";
 import { SITE } from "@/config";
-import { useTranslations } from "@/i18n/ui";
+import { formatDate, useTranslations } from "@/i18n/ui";
 import { getLocaleFromPathname, localizePath } from "@/i18n/utils";
 
 type Props = {
@@ -43,6 +45,9 @@ const {
 const { Content } = await render(post);
 const isIssuePost = /(^|[/\\])_issues([/\\]|$)/.test(post.filePath ?? "");
 const discussionUrl = isIssuePost && canonicalURL ? canonicalURL : undefined;
+const issueComments = discussionUrl ? await getIssueComments(discussionUrl) : [];
+const formatCommentDate = (date: Date) =>
+  formatDate(date, locale, timezone || SITE.timezone);
 
 let ogImageUrl: string | undefined;
 
@@ -140,6 +145,19 @@ const nextPost =
           title={t.discussionTitle}
           description={t.discussionText}
           ctaLabel={t.discussionLinkLabel}
+        />
+      )
+    }
+
+    {
+      discussionUrl && (
+        <IssueComments
+          comments={issueComments}
+          title={t.commentsTitle}
+          emptyText={t.commentsEmpty}
+          postedOnLabel={t.commentsPostedOn}
+          viewOnGitHubLabel={t.commentsViewOnGitHub}
+          formatDate={formatCommentDate}
         />
       )
     }

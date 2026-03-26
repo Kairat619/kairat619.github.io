@@ -47,6 +47,10 @@ type TranslationDictionary = {
   discussionTitle: string;
   discussionText: string;
   discussionLinkLabel: string;
+  commentsTitle: string;
+  commentsEmpty: string;
+  commentsPostedOn: string;
+  commentsViewOnGitHub: string;
 };
 
 const ui: Record<SiteLocale, TranslationDictionary> = {
@@ -99,6 +103,10 @@ const ui: Record<SiteLocale, TranslationDictionary> = {
     discussionText:
       "This post was published from a GitHub issue. Join the conversation on the original thread.",
     discussionLinkLabel: "Discuss on GitHub",
+    commentsTitle: "Comments",
+    commentsEmpty: "No comments yet on this GitHub issue.",
+    commentsPostedOn: "Posted on",
+    commentsViewOnGitHub: "View on GitHub",
   },
   kk: {
     languageName: "Kazakh",
@@ -149,6 +157,10 @@ const ui: Record<SiteLocale, TranslationDictionary> = {
     discussionText:
       "Бұл жазба GitHub issue арқылы жарияланған. Пікір қалдыру немесе талқылауға қосылу үшін бастапқы issue-ге өтіңіз.",
     discussionLinkLabel: "GitHub-та талқылау",
+    commentsTitle: "Пікірлер",
+    commentsEmpty: "Бұл GitHub issue-де әзірге пікір жоқ.",
+    commentsPostedOn: "Жарияланған күні",
+    commentsViewOnGitHub: "GitHub-та ашу",
   },
 };
 

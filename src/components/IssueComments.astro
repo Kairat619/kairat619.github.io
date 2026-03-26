@@ -1,0 +1,79 @@
+---
+export type IssueComment = {
+  id: number;
+  bodyHtml: string;
+  createdAt: Date;
+  updatedAt: Date;
+  url: string;
+  author: {
+    login: string;
+    profileUrl: string;
+    avatarUrl: string;
+  };
+};
+
+type Props = {
+  comments: IssueComment[];
+  title: string;
+  emptyText: string;
+  postedOnLabel: string;
+  viewOnGitHubLabel: string;
+  formatDate: (date: Date) => string;
+};
+
+const {
+  comments,
+  title,
+  emptyText,
+  postedOnLabel,
+  viewOnGitHubLabel,
+  formatDate,
+} = Astro.props;
+---
+
+<section class="mt-8" aria-labelledby="issue-comments-title">
+  <h2 id="issue-comments-title" class="text-xl font-semibold text-accent">
+    {title}
+  </h2>
+
+  {
+    comments.length === 0 ? (
+      <p class="mt-3 text-sm text-foreground/75">{emptyText}</p>
+    ) : (
+      <div class="mt-4 space-y-4">
+        {comments.map(comment => (
+          <article class="rounded-2xl border border-border bg-background/70 p-4 shadow-xs">
+            <header class="flex items-center gap-3">
+              <img
+                src={comment.author.avatarUrl}
+                alt=""
+                width="40"
+                height="40"
+                loading="lazy"
+                class="h-10 w-10 rounded-full border border-border object-cover"
+              />
+              <div class="min-w-0">
+                <div class="font-medium">
+                  <a href={comment.author.profileUrl} target="_blank" rel="noreferrer">
+                    @{comment.author.login}
+                  </a>
+                </div>
+                <div class="text-xs text-foreground/70">
+                  {postedOnLabel} {formatDate(comment.createdAt)}
+                </div>
+              </div>
+            </header>
+
+            <div class="app-prose mt-4 max-w-none" set:html={comment.bodyHtml} />
+
+            <footer class="mt-4 text-sm">
+              <a href={comment.url} target="_blank" rel="noreferrer">
+                {viewOnGitHubLabel}
+              </a>
+            </footer>
+          </article>
+        ))}
+      </div>
+    )
+  }
+</section>
