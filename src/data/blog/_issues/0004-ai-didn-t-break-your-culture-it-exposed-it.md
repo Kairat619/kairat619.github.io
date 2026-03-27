@@ -1,7 +1,7 @@
 ---
 title: "AI Didn't Break Your Culture. It Exposed It."
 pubDatetime: 2026-03-26T08:16:12Z
-modDatetime: 2026-03-26T08:26:44Z
+modDatetime: 2026-03-26T17:48:26Z
 slug: ai-didn-t-break-your-culture-it-exposed-it
 featured: false
 draft: false

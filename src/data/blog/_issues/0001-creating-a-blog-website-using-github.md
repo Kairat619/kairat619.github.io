@@ -1,7 +1,7 @@
 ---
 title: "Creating a blog website using GitHub"
 pubDatetime: 2026-03-24T13:59:16Z
-modDatetime: 2026-03-25T12:33:48Z
+modDatetime: 2026-03-26T17:47:01Z
 slug: creating-a-blog-website-using-github
 featured: false
 draft: false

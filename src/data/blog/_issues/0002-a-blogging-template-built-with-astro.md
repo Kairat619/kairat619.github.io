@@ -1,7 +1,7 @@
 ---
 title: "A blogging template built with Astro"
 pubDatetime: 2026-03-24T14:59:53Z
-modDatetime: 2026-03-26T16:38:13Z
+modDatetime: 2026-03-26T17:49:25Z
 slug: a-blogging-template-built-with-astro
 featured: true
 draft: false
@@ -306,4 +306,3 @@ This workflow will:
 \- Publishes updates to GitHub Pages.
 
 Let me know if you'd like more detailed guidance for code implementation or content styling!
-
